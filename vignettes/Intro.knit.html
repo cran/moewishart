@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+
+
+<style type="text/css">
+code {
+white-space: pre;
+}
+.sourceCode {
+overflow: visible;
+}
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } 
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.at { color: #7d9029; } 
+code span.bn { color: #40a070; } 
+code span.bu { color: #008000; } 
+code span.cf { color: #007020; font-weight: bold; } 
+code span.ch { color: #4070a0; } 
+code span.cn { color: #880000; } 
+code span.co { color: #60a0b0; font-style: italic; } 
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.do { color: #ba2121; font-style: italic; } 
+code span.dt { color: #902000; } 
+code span.dv { color: #40a070; } 
+code span.er { color: #ff0000; font-weight: bold; } 
+code span.ex { } 
+code span.fl { color: #40a070; } 
+code span.fu { color: #06287e; } 
+code span.im { color: #008000; font-weight: bold; } 
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } 
+code span.kw { color: #007020; font-weight: bold; } 
+code span.op { color: #666666; } 
+code span.ot { color: #007020; } 
+code span.pp { color: #bc7a00; } 
+code span.sc { color: #4070a0; } 
+code span.ss { color: #bb6688; } 
+code span.st { color: #4070a0; } 
+code span.va { color: #19177c; } 
+code span.vs { color: #4070a0; } 
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } 
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    var j = 0;
+    while (j < rules.length) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") {
+        j++;
+        continue;
+      }
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') {
+        j++;
+        continue;
+      }
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+
+
+<!-- badges: 
+[![r-universe](https://ocbe-uio.r-universe.dev/badges/moewishart)](https://ocbe-uio.r-universe.dev/moewishart)
+[![License](https://img.shields.io/badge/License-GPLv3-brightgreen.svg)](https://www.gnu.org/licenses/gpl-3.0)
+-->
+<p><a href="https://github.com/zhizuio/moewishart/actions"><img src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTIiIGhlaWdodD0iMjAiPgogIDx0aXRsZT5SLUNNRC1jaGVjayAtIHBhc3Npbmc8L3RpdGxlPgogIDxkZWZzPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJ3b3JrZmxvdy1maWxsIiB4MT0iNTAlIiB5MT0iMCUiIHgyPSI1MCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agc3RvcC1jb2xvcj0iIzQ0NEQ1NiIgb2Zmc2V0PSIwJSI+PC9zdG9wPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMjQyOTJFIiBvZmZzZXQ9IjEwMCUiPjwvc3RvcD4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InN0YXRlLWZpbGwiIHgxPSI1MCUiIHkxPSIwJSIgeDI9IjUwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBzdG9wLWNvbG9yPSIjMzREMDU4IiBvZmZzZXQ9IjAlIj48L3N0b3A+CiAgICAgIDxzdG9wIHN0b3AtY29sb3I9IiMyOEE3NDUiIG9mZnNldD0iMTAwJSI+PC9zdG9wPgogICAgPC9saW5lYXJHcmFkaWVudD4KICA8L2RlZnM+CiAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgIDxnIGZvbnQtZmFtaWx5PSImIzM5O0RlamFWdSBTYW5zJiMzOTssVmVyZGFuYSxHZW5ldmEsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSI+CiAgICAgIDxwYXRoIGlkPSJ3b3JrZmxvdy1iZyIgZD0iTTAsMyBDMCwxLjM0MzEgMS4zNTUyLDAgMy4wMjcwMjcwMywwIEwxMDIsMCBMMTAyLDIwIEwzLjAyNzAyNzAzLDIwIEMxLjM1NTIsMjAgMCwxOC42NTY5IDAsMTcgTDAsMyBaIiBmaWxsPSJ1cmwoI3dvcmtmbG93LWZpbGwpIiBmaWxsLXJ1bGU9Im5vbnplcm8iPjwvcGF0aD4KICAgICAgPHRleHQgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyI+CiAgICAgICAgPHRzcGFuIHg9IjIyLjE5ODE5ODIiIHk9IjE1IiBhcmlhLWhpZGRlbj0idHJ1ZSI+Ui1DTUQtY2hlY2s8L3RzcGFuPgogICAgICA8L3RleHQ+CiAgICAgIDx0ZXh0IGZpbGw9IiNGRkZGRkYiPgogICAgICAgIDx0c3BhbiB4PSIyMi4xOTgxOTgyIiB5PSIxNCI+Ui1DTUQtY2hlY2s8L3RzcGFuPgogICAgICA8L3RleHQ+CiAgICA8L2c+CiAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxMDIpIiBmb250LWZhbWlseT0iJiMzOTtEZWphVnUgU2FucyYjMzk7LFZlcmRhbmEsR2VuZXZhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiPgogICAgICA8cGF0aCBkPSJNMCAwaDQ2LjkzOUM0OC42MjkgMCA1MCAxLjM0MyA1MCAzdjE0YzAgMS42NTctMS4zNyAzLTMuMDYxIDNIMFYweiIgaWQ9InN0YXRlLWJnIiBmaWxsPSJ1cmwoI3N0YXRlLWZpbGwpIiBmaWxsLXJ1bGU9Im5vbnplcm8iPjwvcGF0aD4KICAgICAgPHRleHQgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgYXJpYS1oaWRkZW49InRydWUiPgogICAgICAgIDx0c3BhbiB4PSI0IiB5PSIxNSI+cGFzc2luZzwvdHNwYW4+CiAgICAgIDwvdGV4dD4KICAgICAgPHRleHQgZmlsbD0iI0ZGRkZGRiI+CiAgICAgICAgPHRzcGFuIHg9IjQiIHk9IjE0Ij5wYXNzaW5nPC90c3Bhbj4KICAgICAgPC90ZXh0PgogICAgPC9nPgogICAgPHBhdGggZmlsbD0iIzk1OURBNSIgZD0iTTExIDNjLTMuODY4IDAtNyAzLjEzMi03IDdhNi45OTYgNi45OTYgMCAwIDAgNC43ODYgNi42NDFjLjM1LjA2Mi40ODItLjE0OC40ODItLjMzMiAwLS4xNjYtLjAxLS43MTgtLjAxLTEuMzA0LTEuNzU4LjMyNC0yLjIxMy0uNDI5LTIuMzUzLS44MjItLjA3OS0uMjAyLS40Mi0uODIzLS43MTctLjk5LS4yNDUtLjEzLS41OTUtLjQ1NC0uMDEtLjQ2My41NTItLjAwOS45NDYuNTA4IDEuMDc3LjcxOC42MyAxLjA1OCAxLjYzNi43NiAyLjAzOS41NzcuMDYxLS40NTUuMjQ1LS43NjEuNDQ2LS45MzYtMS41NTctLjE3NS0zLjE4NS0uNzc5LTMuMTg1LTMuNDU2IDAtLjc2Mi4yNzEtMS4zOTIuNzE4LTEuODgyLS4wNy0uMTc1LS4zMTUtLjg5Mi4wNy0xLjg1NSAwIDAgLjU4Ni0uMTgzIDEuOTI1LjcxOGE2LjUgNi41IDAgMCAxIDEuNzUtLjIzNiA2LjUgNi41IDAgMCAxIDEuNzUuMjM2YzEuMzM4LS45MSAxLjkyNS0uNzE4IDEuOTI1LS43MTguMzg1Ljk2My4xNCAxLjY4LjA3IDEuODU1LjQ0Ni40OS43MTcgMS4xMTIuNzE3IDEuODgyIDAgMi42ODYtMS42MzYgMy4yOC0zLjE5NCAzLjQ1Ni4yNTQuMjE5LjQ3My42MzkuNDczIDEuMjk1IDAgLjkzNi0uMDA5IDEuNjg5LS4wMDkgMS45MjUgMCAuMTg0LjEzMS40MDIuNDgxLjMzMkE3LjAxMSA3LjAxMSAwIDAgMCAxOCAxMGMwLTMuODY3LTMuMTMzLTctNy03eiI+PC9wYXRoPgogIDwvZz4KPC9zdmc+Cgo=" alt="R-CMD-check" /></a></p>
+<p>This R-package <code>moewishart</code> provides maximum likelihood
+estimation (MLE) and Bayesian estimation for the <strong>Wishart mixture
+model</strong> and the <strong>Wishart mixture-of-experts</strong>
+(<strong>MoE-Wishart</strong>) model. It implements four different
+inference algorithms for the two model:</p>
+<ul>
+<li>mixture model of Wishart distributions:
+<ul>
+<li>EM algorithm for finding the MLE;</li>
+<li>Bayesian approach using Gibbs-within-MH sampling algorithm.</li>
+</ul></li>
+<li>Mixture-of-Expert model, in which the gating probabilities depend on
+covariates:
+<ul>
+<li>EM-MoE algorithm for finding the MLE;</li>
+<li>Bayesian-MoE approach using a Gibbs-within-MH sampling
+algorithm.</li>
+</ul></li>
+</ul>
+<div id="installation" class="section level2">
+<h2>Installation</h2>
+<p>Install the latest development version from <a href="https://github.com/zhizuio/moewishart">GitHub</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># library(&quot;devtools&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;zhizuio/moewishart&quot;</span>)</span></code></pre></div>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<p><br></p>
+<p>Data simulation from a MoE-Wishart model:</p>
+<ul>
+<li>Sample size <span class="math inline">\(n = 200\)</span></li>
+<li>Dimension of the Wishart distribution <span class="math inline">\(p
+= 2\)</span></li>
+<li>Number of latent components <span class="math inline">\(K =
+3\)</span></li>
+<li><span class="math inline">\(q=3\)</span> gating covariates <span class="math inline">\(\mathbf X = [x_{ij}] \in \mathbb R^{n\times
+q}\)</span>, <span class="math inline">\(x_{ij}\sim\text{N}(0,1)\)</span>, <span class="math inline">\(i=1,...,n\)</span>, <span class="math inline">\(j=1,...,q\)</span></li>
+<li>Fixed covariate effects <span class="math inline">\(\boldsymbol\beta=[\boldsymbol\beta_1,...,\boldsymbol\beta_K]
+\in \mathbb R^{q\times K}\)</span>, with <span class="math inline">\(\boldsymbol\beta_{K}=0\)</span></li>
+<li>Probabilities of subpopulations <span class="math inline">\(\boldsymbol\pi = [\pi_{ik}] \in \mathbb R^{n\times
+q}\)</span>, <span class="math inline">\(\pi_{ik} = \exp(\mathbf
+X_i\boldsymbol\beta_k) / \sum_{l=1}^K\exp(\mathbf
+X_i\boldsymbol\beta_l)\)</span>, <span class="math inline">\(k=1,...,K\)</span></li>
+<li>Degrees of freedom <span class="math inline">\(\boldsymbol\nu =
+(\nu_1,\nu_2,\nu_3) = (8, 12, 3)\)</span></li>
+<li>Scale matrices of the Wishart distribution <span class="math inline">\(\Sigma_1\)</span>, <span class="math inline">\(\Sigma_2\)</span>, <span class="math inline">\(\Sigma_3 \in \mathbb R^{p\times p}\)</span></li>
+<li>Data <span class="math inline">\(S_i \sim
+\pi_{i1}\text{Wishart}(\nu_1, \Sigma_1) + \pi_{i2}\text{Wishart}(\nu_2,
+\Sigma_2) + \pi_{i3}\text{Wishart}(\nu_3, \Sigma_3)\)</span></li>
+</ul>
+<div id="working-model-bayesian-moe-wishart-model" class="section level3">
+<h3>1. Working model: Bayesian MoE-Wishart model</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(moewishart)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">200</span> <span class="co"># number of subjects</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="co"># dimension of covariance matrix</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># fix coefficients of underlying MoE model</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a>Xq <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a>K <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb2-8"><a href="#cb2-8" tabindex="-1"></a>betas <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(Xq <span class="sc">*</span> K, <span class="sc">-</span><span class="dv">2</span>, <span class="dv">2</span>), <span class="at">nrow =</span> Xq, <span class="at">ncol =</span> K)</span>
+<span id="cb2-9"><a href="#cb2-9" tabindex="-1"></a>betas[, K] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb2-10"><a href="#cb2-10" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" tabindex="-1"></a><span class="co"># simulate data</span></span>
+<span id="cb2-12"><a href="#cb2-12" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">simData</span>(n, p,</span>
+<span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a>  <span class="at">Xq =</span> <span class="dv">3</span>, <span class="at">K =</span> <span class="dv">3</span>, <span class="at">betas =</span> betas,</span>
+<span id="cb2-14"><a href="#cb2-14" tabindex="-1"></a>  <span class="at">pis =</span> <span class="fu">c</span>(<span class="fl">0.35</span>, <span class="fl">0.40</span>, <span class="fl">0.25</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" tabindex="-1"></a>  <span class="at">nus =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">3</span>)</span>
+<span id="cb2-16"><a href="#cb2-16" tabindex="-1"></a>)</span>
+<span id="cb2-17"><a href="#cb2-17" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" tabindex="-1"></a><span class="co"># fit Bayesian MoE-Wishart model</span></span>
+<span id="cb2-19"><a href="#cb2-19" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">moewishart</span>(</span>
+<span id="cb2-21"><a href="#cb2-21" tabindex="-1"></a>  dat<span class="sc">$</span>S,</span>
+<span id="cb2-22"><a href="#cb2-22" tabindex="-1"></a>  <span class="at">X =</span> <span class="fu">cbind</span>(<span class="dv">1</span>, dat<span class="sc">$</span>X), <span class="at">K =</span> <span class="dv">3</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" tabindex="-1"></a>  <span class="at">mh_sigma =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="co"># RW-MH variances (length K)</span></span>
+<span id="cb2-24"><a href="#cb2-24" tabindex="-1"></a>  <span class="at">mh_beta =</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.3</span>), <span class="co"># RW-MH variances (length K-1)</span></span>
+<span id="cb2-25"><a href="#cb2-25" tabindex="-1"></a>  <span class="at">niter =</span> <span class="dv">3000</span>, <span class="at">burnin =</span> <span class="dv">1000</span></span>
+<span id="cb2-26"><a href="#cb2-26" tabindex="-1"></a>)</span></code></pre></div>
+<p><br></p>
+<p>Posterior means for degrees of freedom (DoF) of Wishart
+distributions:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>burnin <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>nu_mcmc <span class="ot">&lt;-</span> fit<span class="sc">$</span>nu[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>burnin), ]</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">colMeans</span>(nu_mcmc)</span></code></pre></div>
+<pre><code>## [1]  8.574911 14.397351  3.310689</code></pre>
+<p><br> True DoF:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>dat<span class="sc">$</span>nu <span class="co"># true nu</span></span></code></pre></div>
+<pre><code>## [1]  8 12  3</code></pre>
+<p><br> Posterior means for scale matrices of Wishart distributions:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>MoE_Sigma <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(<span class="st">&quot;+&quot;</span>, fit<span class="sc">$</span>Sigma) <span class="sc">/</span> <span class="fu">length</span>(fit<span class="sc">$</span>Sigma)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>MoE_Sigma</span></code></pre></div>
+<pre><code>## , , 1
+## 
+##           [,1]      [,2]
+## [1,] 0.5197160 0.2103881
+## [2,] 0.2103881 0.7470847
+## 
+## , , 2
+## 
+##           [,1]      [,2]
+## [1,] 1.7637949 0.5540576
+## [2,] 0.5540576 1.3244947
+## 
+## , , 3
+## 
+##            [,1]       [,2]
+## [1,]  4.1115070 -0.1267705
+## [2,] -0.1267705  3.0385263</code></pre>
+<p><br> Posterior means for gating coefficients:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>beta_mcmc <span class="ot">&lt;-</span> fit<span class="sc">$</span>Beta_samples[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>burnin), , ]</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">apply</span>(beta_mcmc, <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>), mean)</span></code></pre></div>
+<pre><code>##            [,1]        [,2] [,3]
+## [1,] -0.3656861 -0.08024419    0
+## [2,] -0.9526224  2.24956385    0
+## [3,]  1.7609922  2.40287152    0
+## [4,] -0.4953755 -2.56072719    0</code></pre>
+</div>
+<div id="working-model-bayesian-wishart-mixture-model" class="section level3">
+<h3>2. Working model: Bayesian Wishart mixture model</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="co"># fit Bayesian Wishart mixture model</span></span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">mixturewishart</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  dat<span class="sc">$</span>S,</span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a>  <span class="at">K =</span> <span class="dv">3</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>  <span class="at">mh_sigma =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>), <span class="co"># RW-MH variances</span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="at">niter =</span> <span class="dv">3000</span>, <span class="at">burnin =</span> <span class="dv">1000</span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>)</span></code></pre></div>
+<p><br> Posterior means for subpopulation probabilities:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">colMeans</span>(fit2<span class="sc">$</span>pi[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>burnin), ])</span></code></pre></div>
+<pre><code>## [1] 0.2690425 0.5088864 0.2220712</code></pre>
+<p><br></p>
+<p>Posterior means for DoF of Wishart distributions:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="fu">colMeans</span>(fit2<span class="sc">$</span>nu[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span>burnin), ])</span></code></pre></div>
+<pre><code>## [1]  7.986113 12.153338  3.284252</code></pre>
+</div>
+<div id="working-model-moe-wishart-model-via-em-algorithm" class="section level3">
+<h3>3. Working model: MoE-Wishart model via EM algorithm</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="co"># fit MoE-Wishart model via EM alg.</span></span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">moewishart</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>  dat<span class="sc">$</span>S,</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>  <span class="at">X =</span> <span class="fu">cbind</span>(<span class="dv">1</span>, dat<span class="sc">$</span>X), <span class="at">K =</span> <span class="dv">3</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;em&quot;</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>  <span class="at">niter =</span> <span class="dv">3000</span></span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Iter   1  loglik = -2079.322610
+## Iter   2  loglik = -1998.694495
+## Iter   3  loglik = -1985.659443
+## Iter   4  loglik = -1947.223842
+## Iter   5  loglik = -1899.666938
+## Iter   6  loglik = -1878.233062
+## Iter   7  loglik = -1861.702657
+## Iter   8  loglik = -1851.548347
+## Iter   9  loglik = -1847.342510
+## Iter  10  loglik = -1845.497390
+## Iter  11  loglik = -1844.693281
+## Iter  12  loglik = -1844.360139
+## Iter  13  loglik = -1844.220804
+## Iter  14  loglik = -1844.160033
+## Iter  15  loglik = -1844.132434
+## Iter  16  loglik = -1844.119493
+## Iter  17  loglik = -1844.113254
+## Iter  18  loglik = -1844.110247
+## Iter  19  loglik = -1844.108705
+## Iter  20  loglik = -1844.107915
+## Iter  21  loglik = -1844.107527
+## Iter  22  loglik = -1844.107312
+## Iter  23  loglik = -1844.107207
+## Iter  24  loglik = -1844.107148
+## Iter  25  loglik = -1844.107116
+## Iter  26  loglik = -1844.107098
+## Iter  27  loglik = -1844.107088
+## Iter  28  loglik = -1844.107082
+## Iter  29  loglik = -1844.107080
+## Iter  30  loglik = -1844.107079
+## Iter  31  loglik = -1844.107077
+## Iter  32  loglik = -1844.107077
+## Converged by loglik tolerance.</code></pre>
+<p><br></p>
+<p>EM estimates for DoF of Wishart distributions:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>fit3<span class="sc">$</span>nu</span></code></pre></div>
+<pre><code>## [1]  7.515417 13.987158  3.274665</code></pre>
+<p><br> EM estimates for Wishart scale matrices:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a>fit3<span class="sc">$</span>Sigma</span></code></pre></div>
+<pre><code>## [[1]]
+##           [,1]      [,2]
+## [1,] 0.5591113 0.2324429
+## [2,] 0.2324429 0.8148737
+## 
+## [[2]]
+##           [,1]      [,2]
+## [1,] 1.7665723 0.5567668
+## [2,] 0.5567668 1.3336367
+## 
+## [[3]]
+##            [,1]       [,2]
+## [1,]  4.3139885 -0.1886288
+## [2,] -0.1886288  3.0983710</code></pre>
+<p><br> EM estimates for gating coefficients:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>fit3<span class="sc">$</span>Beta</span></code></pre></div>
+<pre><code>##             comp1      comp2 comp3
+## [1,] -0.006270492  0.1302039     0
+## [2,] -0.798302303  2.0340525     0
+## [3,]  1.598530103  2.2399293     0
+## [4,] -0.510585695 -2.3465248     0</code></pre>
+</div>
+<div id="working-model-wishart-mixture-model-via-em-algorithm" class="section level3">
+<h3>4. Working model: Wishart mixture model via EM algorithm</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="co"># fit Wishart mixture model via EM alg.</span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a>fit4 <span class="ot">&lt;-</span> <span class="fu">mixturewishart</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a>  dat<span class="sc">$</span>S,</span>
+<span id="cb24-5"><a href="#cb24-5" tabindex="-1"></a>  <span class="at">K =</span> <span class="dv">3</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">&quot;em&quot;</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" tabindex="-1"></a>  <span class="at">niter =</span> <span class="dv">3000</span></span>
+<span id="cb24-8"><a href="#cb24-8" tabindex="-1"></a>)</span></code></pre></div>
+<pre><code>## Running 3 initialization restarts...
+##   -&gt; Restart 1: Loglik = -2011.91
+##   -&gt; Restart 2: Loglik = -1989.16
+##   -&gt; Restart 3: Loglik = -1989.16
+## Iter  10 | Loglik: -1953.0326 | Nu: 5, 7.26, 5
+## Iter  20 | Loglik: -1952.7924 | Nu: 5.15, 7.05, 5.21
+## Iter  30 | Loglik: -1930.6036 | Nu: 4.21, 7.13, 8.27
+## Iter  40 | Loglik: -1902.9306 | Nu: 3.08, 7.78, 10.79
+## Iter  50 | Loglik: -1902.6288 | Nu: 3, 7.76, 11.11
+## Iter  60 | Loglik: -1902.6133 | Nu: 2.99, 7.71, 11.21
+## Iter  70 | Loglik: -1902.6102 | Nu: 2.99, 7.69, 11.26
+## Iter  80 | Loglik: -1902.6095 | Nu: 2.99, 7.68, 11.28
+## Iter  90 | Loglik: -1902.6093 | Nu: 3, 7.68, 11.3
+## Iter 100 | Loglik: -1902.6092 | Nu: 3, 7.68, 11.3
+## Iter 110 | Loglik: -1902.6092 | Nu: 3, 7.68, 11.31
+## Converged at iteration 116</code></pre>
+<p><br> EM estimates for DoF of Wishart distributions:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a>fit4<span class="sc">$</span>nu</span></code></pre></div>
+<pre><code>## [1]  2.995383  7.682819 11.309040</code></pre>
+<p><br> EM estimate for Wishart scale matrices:</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a>fit4<span class="sc">$</span>Sigma</span></code></pre></div>
+<pre><code>## [[1]]
+##           [,1]     [,2]
+## [1,]  4.048859 -1.10103
+## [2,] -1.101030  2.79641
+## 
+## [[2]]
+##           [,1]      [,2]
+## [1,] 0.5582012 0.2515063
+## [2,] 0.2515063 0.8151752
+## 
+## [[3]]
+##           [,1]      [,2]
+## [1,] 2.0930529 0.6273737
+## [2,] 0.6273737 1.5706730</code></pre>
+</div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
