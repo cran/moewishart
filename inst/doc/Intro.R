@@ -3,6 +3,9 @@ knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
 options(rmarkdown.html_vignette.check_title = FALSE)
 
 ## ----eval=FALSE---------------------------------------------------------------
+# install.packages("BayesSUR")
+
+## ----eval=FALSE---------------------------------------------------------------
 # # library("devtools")
 # devtools::install_github("zhizuio/moewishart")
 
